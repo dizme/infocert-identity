@@ -39,7 +39,7 @@ services:
       PORT: $WEB_PORTAL_PORT
 
   vc-repo:
-    platform: linux/arm64/v8
+    platform: linux/x86_64
     image: matteoms/vc-repository:latest
     environment:
       PORT: $VC_REPO_PORT
