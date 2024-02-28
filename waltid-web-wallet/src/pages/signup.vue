@@ -3,7 +3,7 @@
         <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 lg:bg-white lg:bg-opacity-50">
             <div class="mx-auto w-full max-w-sm lg:w-96 p-3 lg:backdrop-blur-md lg:rounded-3xl lg:shadow lg:bg-neutral-100 lg:bg-opacity-40">
                 <div class="">
-                    <img alt="walt.id logo" class="h-24 lg:h-16 w-auto mx-auto mt-2" :src="logoImg" />
+                    <img alt="infocert logo" class="h-24 lg:h-16 w-auto mx-auto mt-2" :src="logoImg" />
                     <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-800">Sign up for your SSI wallet</h2>
                 </div>
 
