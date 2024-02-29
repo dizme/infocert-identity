@@ -1,67 +1,40 @@
 <template>
-    <div>
-        <CloseButton class="flex" />
-        <p class="relative text-sm font-medium leading-6 text-gray-900 dark:text-gray-400">Sign in with Web3:</p>
+    <div class="p-6 max-w-xs mx-auto bg-white rounded-lg shadow-xl overflow-hidden transform transition-all sm:w-full sm:max-w-md">
+        <div class="flex justify-end">
+            <CloseButton class="cursor-pointer" />
+        </div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-300 mb-4">
+            Sign in with Web3:
+        </h3>
 
-        <div class="mt-2 grid grid-rows-3 gap-3">
-            <!-- <div>
-              <a
-                class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0"
-                href="#"
-                @click="beaconTezosWallet"
-              >
-                <img
-                  aria-hidden="true"
-                  class="h-5 w-5"
-                  fill="currentColor"
-                  src="/svg/tezos.svg"
-                />
-                <span class="ml-1 h-5 font-semibold text-gray-800">Tezos</span>
-              </a>
-            </div> -->
-            <!-- <div>
-              <a
-                class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0"
-                href="#"
-                @click="polkadotjsWallet"
-              >
-                 <img
-                  aria-hidden="true"
-                  class="h-5 w-5"
-                  fill="currentColor"
-                  src="/svg/tezos.svg"
-                />
-                <span class="ml-1 h-5 font-semibold text-gray-800">Polkadot</span>
-              </a>
-            </div> -->
-            <div class="flex gap-1">
-                <w3m-connect-button label="Login with WalletConnect" />
-                <!--                <w3m-button label="Login with WalletConnect" @click="store.closeModal()" />-->
-                <!--                <w3m-core-button label="Login with WalletConnect" />-->
+        <div class="mt-2 grid grid-cols-1 gap-4">
+            <div class="flex justify-center items-center gap-2">
+                <w3m-connect-button label="Login with WalletConnect" class="w-full" />
             </div>
             <div>
                 <a
-                    class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0"
+                    class="inline-flex items-center justify-center w-full px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     href="#"
-                    @click="loginWithNear"
+                    @click.prevent="loginWithNear"
                 >
-                    <img aria-hidden="true" class="h-5 w-5" fill="currentColor" src="/svg/near.svg" />
-                    <span class="ml-1 h-5 font-semibold text-gray-800">NEAR</span>
+                    <img aria-hidden="true" class="h-6 w-6 mr-2" src="/svg/near.svg" alt="NEAR logo" />
+                    Login with NEAR
                 </a>
             </div>
             <div>
                 <a
-                    class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0"
+                    class="inline-flex items-center justify-center w-full px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-green-500 to-teal-600 hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
                     href="#"
-                    @click="connectToMyAlgo"
+                    @click.prevent="connectToMyAlgo"
                 >
-                    <img aria-hidden="true" class="h-5 w-5" fill="currentColor" src="/svg/algorand-algo-logo.svg" />
-                    <span class="ml-1 h-5 font-semibold text-gray-800">Algorand</span>
+                    <img aria-hidden="true" class="h-6 w-6 mr-2" src="/svg/algorand-algo-logo.svg" alt="Algorand logo" />
+                    Login with Algorand
                 </a>
             </div>
         </div>
     </div>
 </template>
+
 <script lang="ts" setup>
 import CloseButton from "./CloseButton.vue";
 import ActionResultModal from "~/components/modals/ActionResultModal.vue";

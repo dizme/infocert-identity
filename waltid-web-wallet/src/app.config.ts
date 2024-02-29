@@ -4,7 +4,7 @@ export default defineAppConfig({
         name : "InfoCert Wallet",
         logoImage : "/svg/INFOCERT.svg",
         inWalletLogoImage : "/svg/INFOCERT.svg",
-        bgImage : "/images/start-page-background.png",
+        bgImage : "/images/infocert-background.png",
         showWaltidLoadingSpinner : true,
     }
 })
