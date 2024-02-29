@@ -77,7 +77,7 @@ export default function Offer() {
         className="my-5 flex flex-row justify-center cursor-pointer"
         onClick={() => router.push('/')}
       >
-        <Icon height={35} width={35} />
+        <Icon height={180} width={180} />
       </div>
       <div className="relative w-10/12 sm:w-7/12 lg:w-5/12 text-center shadow-2xl rounded-lg pt-8 pb-8 px-10 bg-white">
         <BackButton />
