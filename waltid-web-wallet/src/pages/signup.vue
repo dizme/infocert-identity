@@ -58,7 +58,11 @@
                     </div>
 
                     <div>
-                        <button :class="[success ? 'bg-green-500 hover:bg-green-600 animate-bounce' : 'bg-blue-600 hover:bg-blue-500']" class="flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" type="submit">
+                        <button type="submit"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
+                        style="background-color: #1e789f;" onmouseover="this.style.backgroundColor='#0B2E4F'"
+                        onmouseout="this.style.backgroundColor='#1e789f'" onfocus="this.style.borderColor='#01A6D8';"
+                        onblur="this.style.borderColor='transparent';">
                             Create Account
                             <svg v-if="isProgress" class="animate-spin ml-1.5 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
