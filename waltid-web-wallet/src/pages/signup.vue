@@ -182,7 +182,7 @@ function validatePassword(): boolean {
 }
 
 definePageMeta({
-    title: "Register for your wallet - walt.id",
+    title: "Get Your InfoCert Wallet",
     layout: "minimal",
     auth: {
         unauthenticatedOnly: true,
@@ -191,7 +191,7 @@ definePageMeta({
 });
 
 useHead({
-    title: "Register for your wallet - walt.id",
+    title: "Get Your InfoCert Wallet",
 });
 </script>
 
