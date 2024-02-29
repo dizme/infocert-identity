@@ -1,7 +1,7 @@
 # BUILD
 FROM docker.io/oven/bun:1 as buildstage
 
-COPY waltid-web-wallet /build
+COPY waltid-web-wallet/. /build
 
 WORKDIR /build
 RUN bun install
