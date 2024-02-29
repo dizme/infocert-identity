@@ -31,17 +31,17 @@ services:
   web-portal:
     image: matteoms/portal:latest
     environment:
-      # NEXT_PUBLIC_VC_REPO: "http://localhost:$VC_REPO_PORT"
-      NEXT_PUBLIC_VC_REPO: "https://infocert-credentials.vercel.app"
+      NEXT_PUBLIC_VC_REPO: "http://localhost:$VC_REPO_PORT"
+      #NEXT_PUBLIC_VC_REPO: "https://infocert-credentials.vercel.app"
       NEXT_PUBLIC_ISSUER: "http://localhost:$ISSUER_API_PORT"
       NEXT_PUBLIC_VERIFIER: "http://localhost:$VERIFIER_API_PORT"
       NEXT_PUBLIC_WALLET: "http://localhost:$WALLET_FRONTEND_PORT"
       PORT: $WEB_PORTAL_PORT
 
-  # vc-repo:
-  #   image: matteoms/vc-repository:latest
-  #   environment:
-  #     PORT: $VC_REPO_PORT
+  vc-repo:
+    image: matteoms/vc-repository:latest
+    environment:
+      PORT: $VC_REPO_PORT
 
   caddy:
     image: caddy:2
