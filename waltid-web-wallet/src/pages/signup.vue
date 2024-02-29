@@ -10,63 +10,76 @@
                 <form class="space-y-6" @submit.prevent="register">
                     <div>
                         <label class="block text-sm font-medium leading-6 text-gray-900" for="name">
-        <span class="flex flex-row items-center">
-            <UserIcon class="h-5 mr-1" />
-            Name
-        </span>
-    </label>
+                            <span class="flex flex-row items-center">
+                                <UserIcon class="h-5 mr-1" />
+                                Name
+                            </span>
+                        </label>
                         <div class="mt-2">
-                            <input id="name" v-model="nameInput" autocomplete="name" autofocus class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600" name="name" required="" type="text"/>
+                            <input id="name" v-model="nameInput" autocomplete="name" autofocus
+                                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600"
+                                name="name" required="" type="text" />
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium leading-6 text-gray-900" for="email">
-        <span class="flex flex-row items-center">
-            <AtSymbolIcon class="h-5 mr-1" />
-            Email Address
-        </span>
-    </label>
+                            <span class="flex flex-row items-center">
+                                <AtSymbolIcon class="h-5 mr-1" />
+                                Email Address
+                            </span>
+                        </label>
                         <div class="mt-2">
-                            <input id="email" v-model="emailInput" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600" name="email" required="" type="email"/>
+                            <input id="email" v-model="emailInput" autocomplete="email"
+                                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600"
+                                name="email" required="" type="email" />
                         </div>
                     </div>
 
                     <div class="space-y-1">
                         <label class="block text-sm font-medium leading-6 text-gray-900" for="password">
-        <span class="flex flex-row items-center">
-            <LockClosedIcon class="h-5 mr-1" />
-            Password
-        </span>
-    </label>
+                            <span class="flex flex-row items-center">
+                                <LockClosedIcon class="h-5 mr-1" />
+                                Password
+                            </span>
+                        </label>
                         <div class="mt-2">
-                            <input id="password" v-model="passwordInput" autocomplete="current-password" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600" name="password" required="" type="password"/>
+                            <input id="password" v-model="passwordInput" autocomplete="current-password"
+                                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600"
+                                name="password" required="" type="password" />
                         </div>
                     </div>
 
                     <div class="space-y-1">
                         <label class="block text-sm font-medium leading-6 text-gray-900" for="password">
-        <span class="flex flex-row items-center">
-            <LockClosedIcon class="h-5 mr-1" />
-            Confirm Password
-        </span>
-    </label>
+                            <span class="flex flex-row items-center">
+                                <LockClosedIcon class="h-5 mr-1" />
+                                Confirm Password
+                            </span>
+                        </label>
                         <div class="mt-2">
-                            <input id="confirm-password" v-model="passwordConfirmInput" autocomplete="off" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600" name="confirmPassword" required="" type="password"/>
+                            <input id="confirm-password" v-model="passwordConfirmInput" autocomplete="off"
+                                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600"
+                                name="confirmPassword" required="" type="password" />
                         </div>
-                        <span v-if="passwordInput !== passwordConfirmInput">Password and Confirm Password should match</span>
+                        <span v-if="passwordInput !== passwordConfirmInput">Password and Confirm Password should
+                            match</span>
                     </div>
 
                     <div>
                         <button type="submit"
-                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
-                        style="background-color: #1e789f;" onmouseover="this.style.backgroundColor='#0B2E4F'"
-                        onmouseout="this.style.backgroundColor='#1e789f'" onfocus="this.style.borderColor='#01A6D8';"
-                        onblur="this.style.borderColor='transparent';">
+                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
+                            style="background-color: #1e789f;" onmouseover="this.style.backgroundColor='#0B2E4F'"
+                            onmouseout="this.style.backgroundColor='#1e789f'" onfocus="this.style.borderColor='#01A6D8';"
+                            onblur="this.style.borderColor='transparent';">
                             Create Account
-                            <svg v-if="isProgress" class="animate-spin ml-1.5 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+                            <svg v-if="isProgress" class="animate-spin ml-1.5 mr-3 h-5 w-5 text-white" fill="none"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                                </circle>
+                                <path class="opacity-75"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                    fill="currentColor"></path>
                             </svg>
                             <CheckCircleIcon v-else class="ml-1.5 h-5 w-5" />
                         </button>
@@ -184,6 +197,7 @@ useHead({
 
 <style scoped>
 @keyframes zoom-in {
+
     25%,
     100% {
         transform: scale(2);
@@ -196,6 +210,7 @@ useHead({
     0% {
         transform: scale(2);
     }
+
     100% {
         transform: scale(1);
     }
@@ -208,5 +223,4 @@ useHead({
 .zoom-out {
     animation: zoom-out 0.5s normal forwards;
     //animation: none;
-}
-</style>
+}</style>

@@ -63,22 +63,22 @@
             <div class="mt-8">
                 <div class="grid grid-cols-1 gap-4">
                     <button class="btn-crypto" @click="openWeb3()">
-    Sign In with Crypto Wallet
-    <svg class="ml-3 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-    </svg>
-</button>
+                        Sign In with Crypto Wallet
+                        <svg class="ml-3 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
 
-<button class="btn-oidc" @click="connectOidc()">
-    Sign In with OIDC
-    <svg class="ml-3 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-    </svg>
-</button>
+                    <button class="btn-oidc" @click="connectOidc()">
+                        Sign In with OIDC
+                        <svg class="ml-3 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
 
                 </div>
             </div>
@@ -279,6 +279,7 @@ if (isOidcLogin.value) {
     animation: zoom-out 0.5s normal forwards;
     //animation: none;
 }
+
 .btn-crypto {
     display: inline-flex;
     justify-content: center;
@@ -338,6 +339,5 @@ if (isOidcLogin.value) {
 .btn-oidc:focus:not(:focus-visible) {
     border-color: transparent;
 }
-
 </style>
 
