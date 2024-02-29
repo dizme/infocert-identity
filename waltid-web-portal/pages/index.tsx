@@ -33,8 +33,7 @@ type CredentialToIssue = AvailableCredential & {
 };
 
 export default function Home() {
-  // const [AvailableCredentials] = React.useContext(CredentialsContext);
-  const AvailableCredentials = mockAvailableCredentials; // Directly using mock data for local development
+  const [AvailableCredentials] = React.useContext(CredentialsContext);
   const router = useRouter();
 
   const [credentialsToIssue, setCredentialsToIssue] = useState<CredentialToIssue[]>(prepareCredentialsToIssue);
@@ -129,7 +128,7 @@ export default function Home() {
           </div>        </div>
       </div>
       <main className="flex flex-col items-center gap-5 justify-between mt-16 md:w-[740px] m-auto">
-        {credentials.length === 0 && <div className='w-full mt-10 text-center'>No Credential with that name.</div>}
+        {credentials.length === 0 && <div className='w-full mt-10 text-center'>No Credentials to show.</div>}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-5 mt-10">
           {credentials.map(({ id, title, selected }) => (
             <Credential
