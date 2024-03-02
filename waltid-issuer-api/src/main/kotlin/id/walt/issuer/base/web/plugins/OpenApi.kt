@@ -12,9 +12,9 @@ fun Application.configureOpenApi() {
             forwardRoot = true
         }
         info {
-            title = "walt.id Issuer API"
+            title = "InfoCert Issuer API"
             version = "latest"
-            description = "Interact with the walt.id issuer"
+            description = "Interact with the InfoCert issuer"
         }
         server {
             url = "/"

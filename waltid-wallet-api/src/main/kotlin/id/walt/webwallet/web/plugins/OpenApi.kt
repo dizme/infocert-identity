@@ -13,7 +13,7 @@ fun Application.configureOpenApi() {
             forwardRoot = true
         }
         info {
-            title = "walt.id wallet API"
+            title = "InfoCert wallet API"
             version = "latest"
             description = """
                 Interact with the wallet backend.
@@ -39,8 +39,8 @@ fun Application.configureOpenApi() {
         }
 
         externalDocs {
-            url = "https://docs.walt.id"
-            description = "docs.walt.id"
+            url = "https://docs.infocert.digital"
+            description = "docs.infocert.digital"
         }
     }
 }
