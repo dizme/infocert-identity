@@ -1,6 +1,7 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div class="mx-auto w-full max-w-lg p-5 lg:rounded-xl shadow-lg lg:bg-white lg:bg-opacity-65 lg:backdrop-blur-md">
+        <div
+            class="mx-auto w-full max-w-lg p-5 lg:rounded-xl shadow-lg lg:bg-white lg:bg-opacity-65 lg:backdrop-blur-md">
             <div class="text-center">
                 <img :src="logoImg" alt="Company Logo" class="h-20 w-auto mx-auto" />
                 <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Access Your Wallet</h2>
@@ -48,7 +49,17 @@
                         onmouseout="this.style.backgroundColor='#1e789f'" onfocus="this.style.borderColor='#01A6D8';"
                         onblur="this.style.borderColor='transparent';">
                         Login
+                        <svg v-if="isLoggingIn" class="animate-spin ml-1.5 mr-3 h-5 w-5 text-white" fill="none"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <ArrowRightEndOnRectangleIcon v-else class="ml-1.5 h-5 w-5" />
                     </button>
+
                 </div>
             </form>
             <!-- Or Continue With Section -->
@@ -70,7 +81,6 @@
                                 d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
                     </button>
-
                     <button class="btn-oidc" @click="connectOidc()">
                         Sign In with OIDC
                         <svg class="ml-3 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -79,11 +89,8 @@
                                 d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
                     </button>
-
                 </div>
             </div>
-
-
         </div>
         <div class="overflow-hidden max-h-screen absolute inset-0 w-full h-full -z-10">
             <img :src="bgImg" alt="Background image" class="absolute inset-0 h-full w-full object-cover" />
@@ -94,10 +101,10 @@
 
     </div>
 </template>
-    
+
 
 <script lang="ts" setup>
-import { ArrowRightOnRectangleIcon, BookmarkSquareIcon, EnvelopeIcon, IdentificationIcon, QuestionMarkCircleIcon, AtSymbolIcon, LockClosedIcon } from "@heroicons/vue/20/solid";
+import { ArrowRightEndOnRectangleIcon, BookmarkSquareIcon, EnvelopeIcon, IdentificationIcon, QuestionMarkCircleIcon, AtSymbolIcon, LockClosedIcon } from "@heroicons/vue/20/solid";
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue";
 import { ExclamationCircleIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { usePageLeave, useParallax } from "@vueuse/core";
@@ -340,4 +347,3 @@ if (isOidcLogin.value) {
     border-color: transparent;
 }
 </style>
-
