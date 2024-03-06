@@ -32,7 +32,8 @@
                 Request credentials
             </NuxtLink>
             <NuxtLink
-                class="inline-flex focus:outline focus:outline-blue-600 focus:outline-offset-2 items-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                class="inline-flex focus:outline focus:outline-blue-600 focus:outline-offset-2 items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                style="background-color: #1e789f;"
                 :to="`/wallet/${currentWallet}/scan`"
                 type="button"
             >

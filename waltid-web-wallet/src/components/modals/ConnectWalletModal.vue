@@ -134,7 +134,7 @@ createWeb3Modal({
 const { setThemeMode, setThemeVariables, themeMode, themeVariables } = useWeb3ModalTheme();
 
 setThemeVariables({
-    "--w3m-accent": "#3b82f6",
+    "--w3m-accent": "#0B2E4F",
     "--w3m-color-mix": "#000"
 });
 

@@ -44,7 +44,8 @@
 
                 <div class="mt-2 flex items-center justify-end gap-x-6">
                     <button
-                        class="inline-flex justify-center bg-blue-500 hover:bg-blue-600 focus-visible:outline-blue-600 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                        class="inline-flex justify-center hover:bg-blue-600 focus-visible:outline-blue-600 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                        style="background-color: #1e789f;"
                         @click="createDid"
                     >
                         <span class="inline-flex place-items-center gap-1">
@@ -69,9 +70,9 @@
 
                     <div class="pt-3 flex justify-end">
                         <NuxtLink :to="`/wallet/${currentWallet}/settings/dids`">
-                            <button class="mb-2 border rounded-xl p-2 bg-blue-500 text-white flex flex-row justify-center items-center">
+                            <button class="mb-2 border rounded-xl p-2 text-white flex flex-row justify-center items-center" style="background-color: #1e789f;">
                                 <ArrowUturnLeftIcon class="h-5 pr-1" />
-                                Return back
+                                Back
                             </button>
                         </NuxtLink>
                     </div>

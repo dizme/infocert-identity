@@ -100,7 +100,8 @@
 
             <div class="mt-2 flex items-center justify-end gap-x-6">
                 <button
-                    :class="[enableLoadPrivateKey ? 'bg-yellow-500 hover:bg-yellow-400 focus-visible:outline-yellow-600' : 'bg-blue-500 hover:bg-blue-600 focus-visible:outline-blue-600']"
+                :class="[enableLoadPrivateKey ? 'hover:bg-yellow-400 focus-visible:outline-yellow-600' : 'hover:bg-blue-600 focus-visible:outline-blue-600']"
+  :style="buttonStyles"
                     class="inline-flex justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                     @click="exportKey"
                 >
@@ -146,9 +147,24 @@ async function deleteKey() {
     });
 }
 
+// Computed property for dynamic button styling
+const buttonStyles = computed(() => {
+    if (enableLoadPrivateKey.value) {
+        return {
+            backgroundColor: '#F59E0B', // For example, yellow-500
+        };
+    } else {
+        return {
+            backgroundColor: '#1e789f', // Your specific color
+        };
+    }
+});
+
+
 useHead({
     title: "View key - InfoCert",
 });
 </script>
 
 <style scoped></style>
+

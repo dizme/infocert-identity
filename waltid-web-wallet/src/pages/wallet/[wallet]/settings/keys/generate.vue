@@ -31,9 +31,9 @@
                 </p>
                 <div class="pt-3 flex justify-end">
                     <NuxtLink :to="`/wallet/${currentWallet}/settings/keys`">
-                        <button class="mb-2 border rounded-xl p-2 bg-blue-500 text-white flex flex-row justify-center items-center">
+                        <button class="mb-2 border rounded-xl p-2 text-white flex flex-row justify-center items-center" style="background-color: #1e789f;">
                             <ArrowUturnLeftIcon class="h-5 pr-1" />
-                            Return back
+                            Back
                         </button>
                     </NuxtLink>
                 </div>

@@ -6,8 +6,9 @@
         <div class="items-center">
             <div class="mt-4">
                 <button
-                    class="inline-flex items-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                    class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                     type="button"
+                    style="background-color: #1e789f;"
                     @click="addWallet"
                 >
                     <PlusIcon aria-hidden="true" class="-ml-0.5 mr-1.5 h-5 w-5" />
@@ -30,8 +31,9 @@
                         <!-- connect -->
                         <button
                             :class="{ 'bg-red-500 hover:bg-red-600': wallet.owner }"
-                            class="w-full rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                            class="w-full rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                             type="button"
+                            style="background-color: #1e789f;"
                             @click="wallet.owner ? disconnectWallet(wallet.id) : connectWallet(wallet.id)"
                         >
                             <span v-if="wallet.owner">Disconnect</span>

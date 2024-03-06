@@ -2,7 +2,7 @@
 -- Insert issuers table
 -- ----------------------------------
 INSERT INTO public."issuers" ("id", "name", "description", "ui", "configuration") 
-VALUES ('6B638061-E4C6-4636-B4E4-F4BE2FCA582C'::UUID, 'walt.id', 'walt.id issuer portal', 'https://portal.walt.id/credentials?ids=', 'https://issuer.portal.walt.id/.well-known/openid-credential-issuer');
+VALUES ('6B638061-E4C6-4636-B4E4-F4BE2FCA582C'::UUID, 'InfoCert', 'InfoCert issuer portal', 'https://infocert-credentials.vercel.app/credentials?ids=', 'https://infocert-credentials.vercel.app/.well-known/openid-credential-issuer');
 -- ----------------------------------
 -- Insert account-issuers table
 -- ----------------------------------

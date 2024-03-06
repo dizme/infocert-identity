@@ -91,8 +91,8 @@ object Db {
 
             runBlocking {
                 IssuersService.add(
-                    name = "walt.id",
-                    description = "walt.id issuer portal",
+                    name = "InfoCert",
+                    description = "InfoCert issuer portal",
                     uiEndpoint = "https://portal.walt.id/credentials?ids=",
                     configurationEndpoint = "https://issuer.portal.walt.id/.well-known/openid-credential-issuer"
                 )

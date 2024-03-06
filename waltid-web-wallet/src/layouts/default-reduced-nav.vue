@@ -58,6 +58,7 @@
                                     </div>
                                 </div>
                             </nav>
+                            
                         </DialogPanel>
                     </TransitionChild>
                     <div aria-hidden="true" class="w-14 flex-shrink-0">
@@ -70,10 +71,11 @@
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex flex-grow flex-col overflow-y-auto bg-blue-600 pb-4 pt-5" style="color: rgb(37, 99, 235)">
+            <div class="flex flex-grow flex-col overflow-y-auto  pb-4 pt-5" style="color: rgb(37, 99, 235); background-color: #0B2E4F;">
                 <div class="flex flex-shrink-0 items-center px-4">
                     <img alt="" class="h-14 w-auto" :src="inWalletLogoImage" />
                 </div>
+                
                 <nav aria-label="Sidebar" class="flex flex-1 flex-col divide-y divide-blue-800 overflow-y-auto">
                     <div class="pt-6">
                         <div class="space-y-1 px-2">
@@ -87,19 +89,57 @@
                         </div>
                     </div>
                 </nav>
+                                        <!-- Profile dropdown -->
+                                        <Menu as="div" class="relative ml-3">
+                            <div>
+                                <MenuButton
+                                    class="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50">
+                                    <!-- src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"/> -->
+                                    <span class="ml-3 hidden text-sm font-medium text-gray-700 lg:block">{{ user.email
+                                        }}</span>
+                                    <ChevronDownIcon aria-hidden="true"
+                                        class="ml-1 hidden h-5 w-5 flex-shrink-0 text-gray-400 lg:block" />
+                                </MenuButton>
+                            </div>
+                            <transition enter-active-class="transition ease-out duration-100"
+                                enter-from-class="transform opacity-0 scale-95"
+                                enter-to-class="transform opacity-100 scale-100"
+                                leave-active-class="transition ease-in duration-75"
+                                leave-from-class="transform opacity-100 scale-100"
+                                leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems class="custom-dropdown">
+                                    <!-- <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
+                                    <NuxtLink
+                                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
+                                        to="/profile">Your Profile </NuxtLink>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }">
+                                    <NuxtLink
+                                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
+                                        to="/settings">Settings </NuxtLink>
+                                    </MenuItem> -->
+                                    <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
+                                    <button
+                                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
+                                        class="w-full text-left" @click="logout">Logout</button>
+                                    </MenuItem>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+
             </div>
         </div>
 
         <div class="flex flex-1 flex-col lg:pl-64">
-            <div class="flex h-16 flex-shrink-0 border-b border-gray-200 bg-white">
+           <!-- <div class="flex h-16 flex-shrink-0 border-b border-gray-200 bg-white">
                 <button
                     class="border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 lg:hidden"
                     type="button" @click="sidebarOpen = true">
                     <span class="sr-only">Open sidebar</span>
                     <Bars3CenterLeftIcon aria-hidden="true" class="h-6 w-6" />
-                </button>
+                </button>-->
                 <!-- Search bar -->
-                <div class="flex flex-1 justify-between px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
+              <!-- <div class="flex flex-1 justify-between px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
                     <div class="flex flex-1">
                         <form action="#" class="flex w-full md:ml-0" method="GET">
                             <label class="sr-only" for="search-field">Search</label>
@@ -122,57 +162,17 @@
                             <ArrowPathIcon :class="[refreshing ? 'animate-spin' : '']" aria-hidden="true"
                                 class="h-6 w-6" />
                         </button>
-                        <button
+                        <!-- <button
                             class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                             type="button">
                             <span class="sr-only">View notifications</span>
                             <BellIcon aria-hidden="true" class="h-6 w-6" />
-                        </button>
-
-                        <!-- Profile dropdown -->
-                        <Menu as="div" class="relative ml-3">
-                            <div>
-                                <MenuButton
-                                    class="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50">
-                                    <img alt="" class="h-8 w-8 rounded-full" src="/svg/walt-s.svg" />
-                                    <!-- src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"/> -->
-                                    <span class="ml-3 hidden text-sm font-medium text-gray-700 lg:block">{{ user.email
-                                        }}</span>
-                                    <ChevronDownIcon aria-hidden="true"
-                                        class="ml-1 hidden h-5 w-5 flex-shrink-0 text-gray-400 lg:block" />
-                                </MenuButton>
-                            </div>
-                            <transition enter-active-class="transition ease-out duration-100"
-                                enter-from-class="transform opacity-0 scale-95"
-                                enter-to-class="transform opacity-100 scale-100"
-                                leave-active-class="transition ease-in duration-75"
-                                leave-from-class="transform opacity-100 scale-100"
-                                leave-to-class="transform opacity-0 scale-95">
-                                <MenuItems
-                                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                    <MenuItem v-slot="{ active }">
-                                    <NuxtLink
-                                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                                        to="/profile">Your Profile </NuxtLink>
-                                    </MenuItem>
-                                    <MenuItem v-slot="{ active }">
-                                    <NuxtLink
-                                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                                        to="/settings">Settings </NuxtLink>
-                                    </MenuItem>
-                                    <MenuItem v-slot="{ active }">
-                                    <button
-                                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                                        class="w-full text-left" @click="logout">Logout</button>
-                                    </MenuItem>
-                                </MenuItems>
-                            </transition>
-                        </Menu>
+                        </button> 
                     </div>
                 </div>
-            </div>
+            </div>-->
 
-            <main class="flex-1 pb-8">
+            <main class="flex-1 pb-8 mt-8">
                 <slot />
             </main>
         </div>
@@ -226,7 +226,8 @@ const sidebarOpen = ref(false);
 <style>
 .router-link-exact-active {
     @apply font-semibold;
-    @apply bg-blue-500;
+    background-color: #1E789F !important;
+    color: white !important; /* Adjust text color as needed */
     @apply hover:bg-blue-500;
 }
 
@@ -253,5 +254,29 @@ const sidebarOpen = ref(false);
     margin-right: 5px;
     border-radius: 2px;
     padding: 3px 10px;
+}
+
+.custom-dropdown {
+    position: absolute;
+    left: 50%; /* Start from the middle of the parent */
+    bottom: 100%; /* Position it above the button */
+    transform: translateX(-50%); /* Center it horizontally */
+    margin-bottom: 0.5rem; /* Space between the dropdown and the button */
+    z-index: 10; /* Ensure it's above other content */
+    width: auto; /* Adjust width as needed */
+    min-width: 10rem; /* Minimum width, adjust as needed */
+    /* Other styling properties */
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.custom-dropdown-item:first-child:hover {
+  border-top-left-radius: 0.5rem; /* Adjust to match dropdown's border-radius */
+  border-top-right-radius: 0.5rem;
+}
+
+.custom-dropdown-item:last-child:hover {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 </style>

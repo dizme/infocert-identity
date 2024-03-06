@@ -17,7 +17,7 @@
 
             <div class="mt-2 flex justify-end">
                 <button
-                    class="inline-flex items-center bg-blue-500 hover:bg-blue-600 focus-visible:outline-blue-600 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                    class="inline-flex items-center hover:bg-blue-600 focus-visible:outline-blue-600 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style="background-color: #1e789f;"
                     @click="importKey"
                 >
                     <DocumentPlusIcon aria-hidden="true" class="h-5 w-5 text-white mr-1" />
