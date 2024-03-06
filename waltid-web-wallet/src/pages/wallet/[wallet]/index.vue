@@ -23,11 +23,22 @@
                         <NuxtLink
                             class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                             :to="`/wallet/${currentWallet}/settings/issuers`"
+                            style="background-color: #01A6D8;"
+                            type="button"
+                        >
+                            <PlusIcon aria-hidden="true" class="-ml-0.5 mr-1.5 h-5 w-5" />
+                            Get PID
+                        </NuxtLink>
+                    </div>
+                    <div class="mt-4">
+                        <NuxtLink
+                            class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                            :to="`/wallet/${currentWallet}/settings/issuers`"
                             style="background-color: #1e789f;"
                             type="button"
                         >
                             <PlusIcon aria-hidden="true" class="-ml-0.5 mr-1.5 h-5 w-5" />
-                            Request credentials
+                            Request (Q)EAA
                         </NuxtLink>
                     </div>
                 </div>

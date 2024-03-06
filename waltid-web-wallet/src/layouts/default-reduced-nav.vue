@@ -181,7 +181,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { Dialog, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, TransitionChild, TransitionRoot } from "@headlessui/vue";
-import { ArrowPathIcon, Bars3CenterLeftIcon, BellIcon, CogIcon, ListBulletIcon, QuestionMarkCircleIcon, ShieldCheckIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { ArrowPathIcon, Bars3CenterLeftIcon, BellIcon, FolderIcon, QrCodeIcon, CogIcon, ListBulletIcon, QuestionMarkCircleIcon, ShieldCheckIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 import { useUserStore } from "~/stores/user";
 import { storeToRefs } from "pinia";
@@ -208,7 +208,7 @@ async function reloadData() {
 }
 
 const secondaryNavigation = [
-    { name: "Select wallet", href: "/", icon: ListBulletIcon },
+    { name: "Select wallet", href: "/", icon: FolderIcon },
     // { name: "Settings", href: "/settings", icon: CogIcon },
     // { name: "Help", href: "/help", icon: QuestionMarkCircleIcon },
     // { name: "Privacy", href: "/help/privacy", icon: ShieldCheckIcon },

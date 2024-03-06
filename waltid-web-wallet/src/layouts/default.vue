@@ -132,7 +132,7 @@
                                 leave-from-class="transform opacity-100 scale-100"
                                 leave-to-class="transform opacity-0 scale-95">
                                 <MenuItems class="custom-dropdown">
-                                    <!-- <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
+                                    <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
                                     <NuxtLink
                                         :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                                         to="/profile">Your Profile </NuxtLink>
@@ -141,7 +141,7 @@
                                     <NuxtLink
                                         :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                                         to="/settings">Settings </NuxtLink>
-                                    </MenuItem> -->
+                                    </MenuItem>
                                     <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
                                     <button
                                         :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
@@ -213,7 +213,7 @@ import {
     IdentificationIcon,
     LinkIcon,
     FolderIcon,
-    KeyIcon, ListBulletIcon,
+    KeyIcon, ListBulletIcon,QrCodeIcon,
     QuestionMarkCircleIcon,
     ShieldCheckIcon,
     XMarkIcon
@@ -251,9 +251,9 @@ const navigation = [
     {
         name: "",
         items: [
-            { name: "Credentials", href: `/wallet/${currentWallet.value}`, icon: FolderIcon },
-            { name: "My Issuers", href: `/wallet/${currentWallet.value}/settings/issuers`, icon: LinkIcon },
-            { name: "DIDs", href: `/wallet/${currentWallet.value}/settings/dids`, icon: IdentificationIcon },
+            { name: "Credentials", href: `/wallet/${currentWallet.value}`, icon: IdentificationIcon },
+            { name: "My Issuers", href: `/wallet/${currentWallet.value}/settings/issuers`, icon: QrCodeIcon },
+            { name: "DIDs", href: `/wallet/${currentWallet.value}/settings/dids`, icon: LinkIcon },
             { name: "Keys", href: `/wallet/${currentWallet.value}/settings/keys`, icon: KeyIcon },
             { name: "Event log", href: `/wallet/${currentWallet.value}/eventlog`, icon: DocumentIcon },
             // { name: "History", href: `/wallet/${currentWallet.value}/history`, icon: DocumentIcon },
@@ -279,7 +279,7 @@ const navigation = [
     //}
 ];
 const secondaryNavigation = [
-    { name: "Select wallet", href: "/", icon: ListBulletIcon },
+    { name: "Select wallet", href: "/", icon: FolderIcon },
     // { name: "Settings", href: "/settings", icon: CogIcon },
     // { name: "Help", href: "/help", icon: QuestionMarkCircleIcon },
     // { name: "Privacy", href: "/help/privacy", icon: ShieldCheckIcon },
