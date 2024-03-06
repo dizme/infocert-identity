@@ -66,7 +66,7 @@ function createDid() {
 }
 
 useHead({
-    title: "DIDs - walt.id",
+    title: "DIDs - InfoCert",
 });
 </script>
 

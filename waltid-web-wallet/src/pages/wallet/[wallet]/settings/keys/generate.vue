@@ -72,7 +72,7 @@ async function generateKey(type: String) {
 }
 
 useHead({
-    title: "Generate key - walt.id",
+    title: "Generate key - InfoCert",
 });
 </script>
 

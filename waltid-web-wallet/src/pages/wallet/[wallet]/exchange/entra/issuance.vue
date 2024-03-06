@@ -227,7 +227,7 @@ if (query.accept) {
     acceptCredential();
 }
 
-useTitle(`Claim credentials - walt.id`);
+useTitle(`Claim credentials - InfoCert`);
 </script>
 
 <style scoped></style>

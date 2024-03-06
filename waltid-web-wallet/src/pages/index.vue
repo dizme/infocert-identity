@@ -47,7 +47,7 @@ const config = useRuntimeConfig();
 
 
 useHead({
-    title: "Wallet selection - walt.id",
+    title: "Wallet selection - InfoCert",
 });
 
 const wallets = await listWallets()
@@ -181,7 +181,7 @@ if (process.client) {
 }
 
 definePageMeta({
-    title: "Select your wallet - walt.id",
+    title: "Select your wallet - InfoCert",
     layout: "default-reduced-nav",
 })
 

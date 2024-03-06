@@ -51,6 +51,6 @@ refreshNuxtData();
 function importIssuer() { }
 
 useHead({
-    title: "Issuers - walt.id",
+    title: "Issuers - InfoCert",
 });
 </script>

@@ -89,7 +89,7 @@ function importKey() {
 }
 
 useHead({
-    title: "Keys - walt.id",
+    title: "Keys - InfoCert",
 });
 </script>
 

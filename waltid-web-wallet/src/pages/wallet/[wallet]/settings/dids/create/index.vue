@@ -36,7 +36,7 @@ const methods = new Map([
 ]);
 
 useHead({
-    title: "Create DID - walt.id",
+    title: "Create DID - InfoCert",
 });
 </script>
 

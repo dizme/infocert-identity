@@ -176,7 +176,7 @@ function openWeb3() {
 }
 
 definePageMeta({
-    title: "Login to your wallet - walt.id",
+    title: "Login to your wallet - InfoCert",
     layout: "minimal",
     auth: {
         unauthenticatedOnly: true,

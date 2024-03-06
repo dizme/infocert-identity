@@ -284,7 +284,7 @@ if (query.accept) {
     console.error("No request")
 }*/
 
-useTitle(`Claim credentials - walt.id`);
+useTitle(`Claim credentials - InfoCert`);
 </script>
 
 <style scoped></style>

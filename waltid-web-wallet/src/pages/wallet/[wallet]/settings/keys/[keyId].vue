@@ -147,7 +147,7 @@ async function deleteKey() {
 }
 
 useHead({
-    title: "View key - walt.id",
+    title: "View key - InfoCert",
 });
 </script>
 

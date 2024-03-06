@@ -69,7 +69,7 @@ function credentialTypeOf(credential) {
 }
 
 useHead({
-    title: "Wallet dashboard - walt.id",
+    title: "Wallet dashboard - InfoCert",
 });
 
 if (process.client) {
@@ -177,7 +177,7 @@ if (process.client) {
 }
 
 definePageMeta({
-    title: "Wallet dashboard - walt.id",
+    title: "Wallet dashboard - InfoCert",
     layout: "default",
 })
 </script>

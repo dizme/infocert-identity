@@ -126,7 +126,7 @@ async function createDid() {
 }
 
 useHead({
-    title: `Create did:${props.method} - walt.id`,
+    title: `Create did:${props.method} - InfoCert`,
 });
 </script>
 

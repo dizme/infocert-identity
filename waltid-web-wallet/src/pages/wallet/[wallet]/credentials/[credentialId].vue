@@ -426,7 +426,7 @@ const issuanceDate = computed(() => {
     }
 });
 
-useHead({ title: "View credential - walt.id" });
+useHead({ title: "View credential - InfoCert" });
 
 async function deleteCredential() {
     await $fetch(`/wallet-api/wallet/${currentWallet.value}/credentials/${encodeURIComponent(credentialId)}`, {

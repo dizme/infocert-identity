@@ -115,7 +115,7 @@ const { data: explorer } = useLazyFetch(`/wallet-api/wallet/${currentWallet.valu
 refreshNuxtData();
 
 useHead({
-    title: "NFT details - walt.id",
+    title: "NFT details - InfoCert",
 });
 
 function showRedeem() {

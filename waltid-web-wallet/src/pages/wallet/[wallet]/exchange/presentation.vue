@@ -307,7 +307,7 @@ if (query.accept) {
     acceptPresentation();
 }
 
-useTitle(`Present credentials - walt.id`);
+useTitle(`Present credentials - InfoCert`);
 </script>
 
 <style scoped></style>

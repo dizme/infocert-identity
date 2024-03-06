@@ -204,6 +204,6 @@ function openDetailPage(nft) {
 }
 
 useHead({
-    title: "Tokens - walt.id",
+    title: "Tokens - InfoCert",
 });
 </script>

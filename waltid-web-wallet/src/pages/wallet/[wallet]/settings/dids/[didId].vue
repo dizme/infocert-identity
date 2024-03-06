@@ -98,7 +98,7 @@ async function setDefault() {
 }
 
 useHead({
-    title: "View DID - walt.id",
+    title: "View DID - InfoCert",
 });
 </script>
 
