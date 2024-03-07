@@ -32,7 +32,7 @@ export default function Credential({
         <div className="flex justify-between items-start">
           <WaltIcon height={35} width={35} outline type="white" />
           <div
-            className={`text-sm font-semibold px-2 py-1 rounded-full text-white ${selected ? 'bg-primary-700' : 'bg-primary-500'}`}
+            className={`text-sm font-semibold px-2 py-1 rounded-full text-white ${selected ? 'bg-primary-600' : 'bg-primary-700'}`}
             style={{ transition: 'background-color 300ms' }}
           >
             {selected ? 'Selected' : 'Select'}

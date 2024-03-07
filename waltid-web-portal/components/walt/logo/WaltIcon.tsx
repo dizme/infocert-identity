@@ -13,7 +13,7 @@ export default function WaltIcon({
   type = 'primary',
   outline = false,
 }: Props) {
-  let firstColor = '#0573F0';
+  let firstColor = '#1e789f';
   let secondColor = '#E6F6FF';
 
   if (type === 'gray') {
@@ -28,7 +28,7 @@ export default function WaltIcon({
 
   if (type === 'white') {
     firstColor = '#F5F7FA';
-    secondColor = '#0573F0';
+    secondColor = '#1e789f';
   }
 
   if (type === 'green') {
