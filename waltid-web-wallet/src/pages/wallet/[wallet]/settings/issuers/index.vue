@@ -20,6 +20,51 @@
                 <div class="min-w-0">
                     <div class="flex items-start gap-x-3">
                         <p class="mx-2 text-base font-semibold leading-6 text-gray-900">
+                            InfoCert PID
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-x-3">
+                        <p class="mx-2 overflow-x-auto text-base font-normal leading-6 text-gray-500">
+                            InfoCert PID Issuer Portal
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-none items-center gap-x-4">
+                    <NuxtLink :to="`/wallet/${currentWallet}/settings/issuers/${issuer.name}`" target="_blank"
+                        rel="noopener noreferrer"
+                        class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
+                        Get PID
+                    </NuxtLink>
+                </div>
+            </li>
+        </ol>
+        <ol class="divide-y divide-gray-100 list-decimal border rounded-2xl mt-2 px-2" role="list">
+            <li v-for="issuer in issuers" :key="issuer" class="flex items-center justify-between gap-x-6 py-4">
+                <div class="min-w-0">
+                    <div class="flex items-start gap-x-3">
+                        <p class="mx-2 text-base font-semibold leading-6 text-gray-900">
+                            InfoCert (Q)EAA
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-x-3">
+                        <p class="mx-2 overflow-x-auto text-base font-normal leading-6 text-gray-500">
+                            InfoCert (Q)EAA Issuer Portal
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-none items-center gap-x-4">
+                    <NuxtLink :to="`http://142.93.173.112:7102/`" target="_blank" rel="noopener noreferrer"
+                        class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
+                        Get (Q)EAA
+                    </NuxtLink>
+                </div>
+            </li>
+        </ol>
+        <!-- <ol class="divide-y divide-gray-100 list-decimal border rounded-2xl mt-2 px-2" role="list">
+            <li v-for="issuer in issuers" :key="issuer" class="flex items-center justify-between gap-x-6 py-4">
+                <div class="min-w-0">
+                    <div class="flex items-start gap-x-3">
+                        <p class="mx-2 text-base font-semibold leading-6 text-gray-900">
                             {{ issuer.name }}
                         </p>
                     </div>
@@ -30,14 +75,15 @@
                     </div>
                 </div>
                 <div class="flex flex-none items-center gap-x-4">
-                    <NuxtLink :to="`/wallet/${currentWallet}/settings/issuers/${issuer.name}`"
+                    <NuxtLink :to="`/wallet/${currentWallet}/settings/issuers/${issuer.name}`" target="_blank"
+                        rel="noopener noreferrer"
                         class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
                         View supported credentials
                     </NuxtLink>
                 </div>
             </li>
         </ol>
-        <p v-if="issuers && issuers.length == 0" class="mt-2">No issuers.</p>
+        <p v-if="issuers && issuers.length == 0" class="mt-2">No issuers.</p> -->
     </CenterMain>
 </template>
 

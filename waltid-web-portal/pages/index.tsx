@@ -103,7 +103,7 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center mt-10">
         <div className="flex flex-row justify-between items-center space-x-20 w-full max-w-4xl px-5">
           <h1 className="text-4xl font-bold text-primary-900">
-            InfoCert Portal
+            InfoCert (Q)EAA Portal
           </h1>
           <div className='flex flex-row gap-5'>
             <div className='flex flex-row border-b border-b-1 border-gray-200 items-center' style={{ flexGrow: 1 }}>
@@ -122,7 +122,7 @@ export default function Home() {
           <div className="flex flex-col items-center mt-10">
             <div className="text-center max-w-4xl px-5">
               <p className="text-lg text-primary-900">
-                Below, you'll find a comprehensive list of available credentials that can be issued or verified. Utilize the search bar above to quickly find credentials by name. If you have specific requirements or need to issue credentials manually, you can do so by using a JSON format through the "Custom Credential" option. Explore the options below to select and manage the credentials according to your needs.
+                Below, you'll find a comprehensive list of available (Q)EAAs that can be issued or verified. Utilize the search bar above to quickly find credentials by name. If you have specific requirements or need to issue credentials manually, you can do so by using a JSON format through the "Custom Credential" option. Explore the options below to select and manage the credentials according to your needs.
               </p>
             </div>
           </div>        </div>
