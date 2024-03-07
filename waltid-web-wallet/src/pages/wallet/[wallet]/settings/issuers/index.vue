@@ -16,7 +16,7 @@
         </div>
 
         <ol class="divide-y divide-gray-100 list-decimal border rounded-2xl mt-2 px-2" role="list">
-            <li v-for="issuer in issuers" :key="issuer" class="flex items-center justify-between gap-x-6 py-4">
+            <li class="flex items-center justify-between gap-x-6 py-4">
                 <div class="min-w-0">
                     <div class="flex items-start gap-x-3">
                         <p class="mx-2 text-base font-semibold leading-6 text-gray-900">
@@ -39,7 +39,7 @@
             </li>
         </ol>
         <ol class="divide-y divide-gray-100 list-decimal border rounded-2xl mt-2 px-2" role="list">
-            <li v-for="issuer in issuers" :key="issuer" class="flex items-center justify-between gap-x-6 py-4">
+            <li class="flex items-center justify-between gap-x-6 py-4">
                 <div class="min-w-0">
                     <div class="flex items-start gap-x-3">
                         <p class="mx-2 text-base font-semibold leading-6 text-gray-900">
