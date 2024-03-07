@@ -77,7 +77,7 @@ const Modal = ({
                 {securedByWalt && (
                   <div className="flex flex-col items-center">
                     <div className="flex flex-row gap-2 items-center content-center text-sm text-center text-gray-500">
-                      <p className="">Secured by walt.xyz</p>
+                      <p className="">Secured by InfoCert</p>
                       <WaltIcon height={15} width={15} type="gray" />
                     </div>
                   </div>
