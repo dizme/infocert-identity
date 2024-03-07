@@ -63,7 +63,7 @@
                 </div>
             </form>
             <!-- Or Continue With Section -->
-            <div class="relative mt-6">
+            <!-- <div class="relative mt-6">
                 <div aria-hidden="true" class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-gray-300" />
                 </div>
@@ -90,7 +90,7 @@
                         </svg>
                     </button>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="overflow-hidden max-h-screen absolute inset-0 w-full h-full -z-10">
             <img :src="bgImg" alt="Background image" class="absolute inset-0 h-full w-full object-cover" />
