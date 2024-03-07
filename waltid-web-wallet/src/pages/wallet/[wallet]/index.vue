@@ -2,10 +2,10 @@
     <div>
         <WalletPageHeader />
         <CenterMain>
-            <div>
+            <div class="center-main">
                 <span v-if="credentials && credentials.length > 0" class="font-semibold">Your credentials ({{ credentials.length }}):</span>
 
-                <LoadingIndicator v-else-if="pending">Loading credentials...</LoadingIndicator>
+                <LoadingIndicator v-else-if="pending" >Loading credentials...</LoadingIndicator>
 
                 <div v-else class="text-center pt-3">
                     <svg aria-hidden="true" class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,4 +203,12 @@ definePageMeta({
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.center-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: calc(100vh - 90); */
+}
+
 </style>

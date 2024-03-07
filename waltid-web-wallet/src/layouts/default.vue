@@ -132,7 +132,7 @@
                                 leave-from-class="transform opacity-100 scale-100"
                                 leave-to-class="transform opacity-0 scale-95">
                                 <MenuItems class="custom-dropdown">
-                                    <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
+                                    <!-- <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
                                     <NuxtLink
                                         :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                                         to="/profile">Your Profile </NuxtLink>
@@ -141,7 +141,7 @@
                                     <NuxtLink
                                         :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                                         to="/settings">Settings </NuxtLink>
-                                    </MenuItem>
+                                    </MenuItem> -->
                                     <MenuItem v-slot="{ active }" class="custom-dropdown-item ...">
                                     <button
                                         :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
