@@ -108,7 +108,6 @@ import { ArrowRightEndOnRectangleIcon, BookmarkSquareIcon, EnvelopeIcon, Identif
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue";
 import { ExclamationCircleIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { usePageLeave, useParallax } from "@vueuse/core";
-import ConnectWalletModal from "~/components/modals/ConnectWalletModal.vue";
 import useModalStore from "~/stores/useModalStore";
 import { useUserStore } from "~/stores/user";
 import { storeToRefs } from "pinia";
@@ -176,10 +175,11 @@ function closeModal() {
 
 function openWeb3() {
     console.log("open web3");
+    alert("Not supported in this version.")
 
-    store.openModal({
+    /*store.openModal({
         component: ConnectWalletModal,
-    });
+    });*/
 }
 
 definePageMeta({
@@ -263,7 +263,6 @@ if (isOidcLogin.value) {
     25%,
     100% {
         transform: scale(2);
-        //opacity: 0;
         filter: blur(1rem);
     }
 }
