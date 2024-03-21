@@ -112,8 +112,8 @@ import useModalStore from "~/stores/useModalStore";
 import { useUserStore } from "~/stores/user";
 import { storeToRefs } from "pinia";
 import { useTenant } from "~/composables/tenants";
-import { CRYPTO_JWT_TTL } from "@walletconnect/core";
-import { decodeJWT } from "@walletconnect/relay-auth";
+// import { CRYPTO_JWT_TTL } from "@walletconnect/core";
+import { decodeJwt } from "jose";
 
 const store = useModalStore();
 
@@ -231,16 +231,19 @@ async function tryLoginWithOidcSession() {
         { callbackUrl: signInRedirectUrl.value },
     )
         .then(() => {
+            console.log("Signed in with OIDC");
+            console.log("Token: " + decodeJwt(tokenText).sub);
             user.value = {
                 token: tokenText,
                 id: "",
-                email: decodeJWT(tokenText).payload.email,
-                name: decodeJWT(tokenText).payload.name,
+                email: decodeJwt(tokenText).email,
+                name: decodeJwt(tokenText).name,
                 oidcSession: true
             };
 
             console.log("Wrote to user: " + JSON.stringify(user.value))
         })
+
         .catch((err) => {
             console.log("Could not sign in", err);
             error.value = {
