@@ -50,7 +50,7 @@
                         class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow w-[96%] transform hover:scale-105 cursor-pointer duration-200"
                     >
                         <NuxtLink :to="`/wallet/${walletId}/credentials/` + encodeURIComponent(credential.id)">
-                            <VerifiableCredentialCard :credential="credential"/>
+                            <VerifiableCredentialCard :credential="credential" />
                         </NuxtLink>
                     </li>
                 </ul>
@@ -68,16 +68,16 @@ import VerifiableCredentialCard from "~/components/credentials/VerifiableCredent
 
 const config = useRuntimeConfig();
 
-const route = useRoute()
-const currentWallet = useCurrentWallet()
+const route = useRoute();
+const currentWallet = useCurrentWallet();
 
-const walletId = route.params.wallet
+const walletId = route.params.wallet;
 
 const { data: credentials, pending, refresh, error } = await useLazyFetch(`/wallet-api/wallet/${walletId}/credentials`);
 refreshNuxtData();
 
 function credentialTypeOf(credential) {
-    return credential.type[credential.type.length - 1];
+    return credential?.type[credential.type.length - 1];
 }
 
 useHead({
@@ -140,7 +140,7 @@ if (process.client) {
         }
     }
 
-    initialiseState();
+    // initialiseState();  // DISABLED: notifications
 
     function subscribe() {
         navigator.serviceWorker.ready.then(function (serviceWorkerRegistration) {
@@ -169,8 +169,8 @@ if (process.client) {
         console.log("Send subscription to server...");
 
         // Get public key and user auth from the subscription object
-        var key = subscription.getKey ? subscription.getKey("p256dh") : "";
-        var auth = subscription.getKey ? subscription.getKey("auth") : "";
+        const key = subscription.getKey ? subscription.getKey("p256dh") : "";
+        const auth = subscription.getKey ? subscription.getKey("auth") : "";
 
         return fetch("/wallet-api/push/subscription", {
             method: "POST",
@@ -191,7 +191,7 @@ if (process.client) {
 definePageMeta({
     title: "Wallet dashboard - InfoCert",
     layout: "default",
-})
+});
 </script>
 
 <style scoped>

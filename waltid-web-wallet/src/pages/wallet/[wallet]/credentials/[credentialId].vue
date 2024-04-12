@@ -27,7 +27,7 @@
                                         </div>
                                     </div>
                                 </div>-->
-                <VerifiableCredentialCard :credential="credential" :isDetailView="true" />
+                <VerifiableCredentialCard :credential="credential" :isDetailView="true"/>
             </div>
             <div class="px-7 py-1">
                 <div class="text-gray-600 font-bold">
@@ -146,8 +146,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img :src="jwtJson?.credentialSubject?.achievement.image?.id"
-                            class="w-32 h-20 hidden md:block" />
+                        <img :src="jwtJson?.credentialSubject?.achievement.image?.id" class="w-32 h-20 hidden md:block" />
                     </div>
                 </div>
 
@@ -232,18 +231,17 @@
                     <hr class="my-5" />
                     <div class="text-gray-500 mb-4 font-bold">Entra Manifest Claims</div>
                     <ul>
-                        <li v-for="[jsonKey, nameDescriptor] in Object.entries(manifestClaims)"
-                            class="md:flex text-gray-500 mb-3 md:mb-1">
+                        <li v-for="[jsonKey, nameDescriptor] in Object.entries(manifestClaims)" class="md:flex text-gray-500 mb-3 md:mb-1">
                             <div class="min-w-[19vw]">{{ nameDescriptor?.label ?? "Unknown" }}</div>
                             <div class="font-bold truncate hover:overflow-auto">
                                 {{
-            credential
-                ? JSONPath({
-                    path: jsonKey.replace(/^vc\./, ""),
-                    json: jwtJson,
-                }).find((elem) => elem) ?? `Not found: ${jsonKey}`
-                : null
-        }}
+                                    credential
+                                        ? JSONPath({
+                                              path: jsonKey.replace(/^vc\./, ""),
+                                              json: jwtJson,
+                                          }).find((elem) => elem) ?? `Not found: ${jsonKey}`
+                                        : null
+                                }}
                             </div>
                         </li>
                     </ul>
@@ -265,11 +263,10 @@
                     <hr class="mt-5 mb-3" />
                     <div>
                         {{
-            jwtJson?.expirationDate && jwtJson?.issuanceDate
-                ? "Valid from " + new Date(jwtJson?.issuanceDate).toISOString().slice(0, 10) + " to " + new
-                    Date(jwtJson?.expirationDate).toISOString().slice(0, 10)
-                : ""
-        }}
+                            jwtJson?.expirationDate && jwtJson?.issuanceDate
+                                ? "Valid from " + new Date(jwtJson?.issuanceDate).toISOString().slice(0, 10) + " to " + new Date(jwtJson?.expirationDate).toISOString().slice(0, 10)
+                                : ""
+                        }}
                     </div>
                     <div class="text-gray-900">
                         Issued:
@@ -281,19 +278,26 @@
         <div class="flex justify-between mt-12">
             <div class="flex gap-3">
                 <button
-                    class="rounded px-2 py-1 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400"
-                    type="button" @click="showCredentialJson = !showCredentialJson" style="background-color: #0B2E4F;">
-                    View Credential In JSON
-                </button>
-                <button v-if="manifest"
                     class="rounded bg-primary-400 px-2 py-1 text-white shadow-sm hover:bg-primary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400"
-                    type="button" @click="showCredentialManifest = !showCredentialManifest">
+                    type="button"
+                    @click="showCredentialJson = !showCredentialJson"
+                >
+                    View Credential
+                </button>
+                <button
+                    v-if="manifest"
+                    class="rounded bg-primary-400 px-2 py-1 text-white shadow-sm hover:bg-primary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400"
+                    type="button"
+                    @click="showCredentialManifest = !showCredentialManifest"
+                >
                     View Credential Manifest
                 </button>
             </div>
             <button
                 class="rounded bg-red-500 px-2 py-1 text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
-                type="button" @click="deleteCredential">
+                type="button"
+                @click="deleteCredential"
+            >
                 Delete Credential
             </button>
         </div>
@@ -306,21 +310,20 @@
                     <p class="text-sm text-gray-500">Verifiable Credential data below:</p>
                 </div>
             </div>
-            <!-- <div class="p-3 shadow mt-3">
+            <div class="p-3 shadow mt-3">
                     <h3 class="font-semibold mb-2">QR code</h3>
-                    <div v-if="credential && credential.length">
-                        <qrcode-vue v-if="credential.length <= 4296" :value="credential" level="L" size="300"></qrcode-vue>
-                        <p v-else>Unfortunately, this Verifiable Credential is too big to be viewable as QR code (credential size is {{ credential.length }} characters, but the maximum a QR code
+                    <div v-if="credential && credential.document">
+                        <qrcode-vue v-if="credential.document && credential.document.length <= 4296" :value="credential.document" level="L" size="500" class="m-5++++++++++----------------------------------++++++++++++++++++++++++++++" />
+                        <p v-else>Unfortunately, this Verifiable Credential is too big to be viewable as QR code (credential size is {{ credential.document.length }} characters, but the maximum a QR code
                             can hold is 4296).</p>
                     </div>
-
-                </div>-->
+                </div>
             <div class="shadow p-3 mt-2 font-mono overflow-scroll">
                 <h3 class="font-semibold mb-2">JWT</h3>
                 <pre v-if="credential && credential?.document">{{
-            /*JSON.stringify(JSON.parse(*/
-            credential.document /*), null, 2)*/ ?? ""
-        }}</pre>
+                    /*JSON.stringify(JSON.parse(*/
+                    credential.document /*), null, 2)*/ ?? ""
+                }}</pre>
             </div>
             <div class="shadow p-3 mt-2 font-mono overflow-scroll">
                 <h3 class="font-semibold mb-2">JSON</h3>
@@ -354,6 +357,7 @@ import { decodeBase64ToUtf8 } from "~/composables/base64";
 import VerifiableCredentialCard from "~/components/credentials/VerifiableCredentialCard.vue";
 import { parseDisclosures } from "~/composables/disclosures";
 import { JSONPath } from "jsonpath-plus";
+import QrcodeVue from 'qrcode.vue'
 
 const route = useRoute();
 const credentialId = route.params.credentialId as string;
@@ -373,9 +377,14 @@ const jwtJson = computed(() => {
         const decodedBase64 = decodeBase64ToUtf8(vcBase64).toString();
         console.log("Decoded: ", decodedBase64);
 
-        const parsed = JSON.parse(decodedBase64);
+        let parsed
+        try {
+            parsed = JSON.parse(decodedBase64);
+        } catch (e) {
+            console.log(e)
+        }
 
-        if (parsed.vc) return parsed.vc;
+        if (parsed?.vc) return parsed.vc;
         else return parsed;
     } else return null;
 });
@@ -406,7 +415,7 @@ const issuerName = ref(null);
 const issuerDid = ref(null);
 const credentialIssuerService = ref(null);
 
-watchEffect(() => {
+watchEffect(() =>{
     issuerName.value = manifest.value?.display?.card?.issuedBy ?? jwtJson.value?.issuer?.name;
     issuerDid.value = manifest.value?.input?.issuer ?? jwtJson.value?.issuer?.id ?? jwtJson.value?.issuer;
     credentialIssuerService.value = manifest.value?.input?.credentialIssuer;
@@ -422,7 +431,7 @@ const issuanceDate = computed(() => {
     }
 });
 
-useHead({ title: "View credential - InfoCert" });
+useHead({ title: "View credential - walt.id" });
 
 async function deleteCredential() {
     await $fetch(`/wallet-api/wallet/${currentWallet.value}/credentials/${encodeURIComponent(credentialId)}`, {

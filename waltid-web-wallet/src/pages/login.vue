@@ -1,110 +1,235 @@
 <template>
-    <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="mx-auto w-full max-w-lg p-5 lg:rounded-xl shadow-lg lg:bg-white lg:bg-opacity-65 lg:backdrop-blur-md">
-            <div class="text-center">
-                <img :src="logoImg" alt="Company Logo" class="h-20 w-auto mx-auto" />
-                <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Access Your Wallet</h2>
-                <p class="mt-2 text-sm text-gray-600">
-                    Don't have an account?
-                    <NuxtLink class="font-medium text-indigo-600 hover:text-indigo-500" to="/signup">Create one now
-                    </NuxtLink>
-                </p>
-            </div>
-            <!-- Email and Password Form -->
-            <form class="mt-6 space-y-6" @submit.prevent="login">
-                <div>
-                    <label class="block text-sm font-medium leading-6 text-gray-900" for="email">
-                        <span class="flex flex-row items-center">
-                            <AtSymbolIcon class="h-5 mr-1" />
-                            Email address
-                        </span>
-                    </label>
-                    <div class="mt-2">
-                        <input id="email" v-model="emailInput" autocomplete="email" autofocus
-                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                            name="email" required type="email" />
+    <div class="flex min-h-full">
+        <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 lg:bg-white lg:bg-opacity-50">
+            <div class="mx-auto w-full max-w-sm lg:w-96 p-3 lg:backdrop-blur-md lg:rounded-3xl lg:shadow lg:bg-neutral-100 lg:bg-opacity-40">
+                <div class="">
+                    <img :src="logoImg" alt="walt.id logo" class="h-24 lg:h-16 w-auto mx-auto mt-2" />
+                    <!-- TODO: i18n system -->
+                    <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-800">Sign in to your SSI wallet</h2>
+                    <p v-if="!isOidcLogin" class="mt-2 text-sm text-gray-600">
+                        Or {{ " " }}
+                        <NuxtLink class="font-medium text-blue-600 hover:text-blue-500" to="/signup">sign up for your SSI wallet</NuxtLink>
+                        !
+                    </p>
+                    <p v-if="isOidcLogin" class="flex items-center">
+                        <LoadingIndicator> OIDC Login processing... </LoadingIndicator>
+                    </p>
+                </div>
+
+                <div v-if="!isOidcLogin" class="mt-5">
+                    <div>
+                        <!-- open modal for all 'connect with' chains -->
+                        <div class="flex h-14 gap-5 mx-1">
+                            <div class="w-full inline-flex justify-center">
+                                <button
+                                    class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-blue-600 transition duration-300 ease-out border-2 border-blue-600 rounded-full shadow-md group"
+                                    @click="openWeb3()"
+                                >
+                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-600 group-hover:translate-x-0 ease">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="absolute flex items-center justify-center w-full h-full text-blue-600 transition-all duration-300 transform group-hover:translate-x-full ease">
+                                        Connect with web3
+                                    </span>
+                                    <span class="relative invisible">Connect with web3</span>
+                                </button>
+                            </div>
+
+                            <div class="w-full inline-flex justify-center">
+                                <button
+                                    class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-blue-600 transition duration-300 ease-out border-2 border-blue-600 rounded-full shadow-md group"
+                                    @click="connectOidc()"
+                                >
+                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-600 group-hover:translate-x-0 ease">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="absolute flex items-center justify-center w-full h-full text-blue-600 transition-all duration-300 transform group-hover:translate-x-full ease">
+                                        Connect with OIDC
+                                    </span>
+                                    <span class="relative invisible">Connect with OIDC</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative mt-6">
+                            <div aria-hidden="true" class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300" />
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="bg-white px-2 text-gray-500 rounded-3xl">Or continue with</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <form class="space-y-6" @submit.prevent="login">
+                            <div>
+                                <label class="block text-sm font-medium leading-6 text-gray-900" for="email">
+                                    <span class="flex flex-row items-center">
+                                        <EnvelopeIcon class="h-5 mr-1" />
+                                        Email address
+                                    </span></label
+                                >
+                                <div class="mt-2">
+                                    <input
+                                        id="email"
+                                        v-model="emailInput"
+                                        autocomplete="email"
+                                        autofocus
+                                        class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600"
+                                        name="email"
+                                        :required="true"
+                                        type="email"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="block text-sm font-medium leading-6 text-gray-900" for="password">
+                                    <span class="flex flex-row items-center">
+                                        <IdentificationIcon class="h-5 mr-1" />
+                                        Password
+                                    </span></label
+                                >
+                                <div class="mt-2">
+                                    <input
+                                        id="password"
+                                        v-model="passwordInput"
+                                        autocomplete="current-password"
+                                        class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-2 text-gray-600"
+                                        name="password"
+                                        :required="true"
+                                        type="password"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-1.5">
+                                <button
+                                    :class="[success ? 'bg-green-500 hover:bg-green-600 animate-bounce' : 'bg-blue-600  hover:bg-blue-500']"
+                                    class="flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                                    type="submit"
+                                >
+                                    Sign in
+                                    <svg v-if="isLoggingIn" class="animate-spin ml-1.5 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path
+                                            class="opacity-75"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                            fill="currentColor"
+                                        ></path>
+                                    </svg>
+                                    <ArrowRightOnRectangleIcon v-else class="ml-1.5 h-5 w-5" />
+                                </button>
+                            </div>
+
+                            <div class="flex items-center justify-between pb-2">
+                                <div class="flex items-center">
+                                    <input id="remember-me" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600" name="remember-me" type="checkbox" />
+                                    <label class="ml-2 block text-sm text-gray-900" for="remember-me">
+                                        <span class="flex flex-row items-center">
+                                            <BookmarkSquareIcon class="-ml-0.5 mr-0.5 h-4 w-4" />
+                                            Remember me
+                                        </span></label
+                                    >
+                                </div>
+
+                                <div class="text-sm">
+                                    <a class="font-medium text-blue-600 hover:text-blue-500" href="#">
+                                        <span class="flex flex-row items-center">
+                                            <QuestionMarkCircleIcon class="h-5 w-5 mr-0.5" />
+                                            Forgot your password?
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="overflow-hidden max-h-screen absolute left-0 w-full h-full -z-10 hidden lg:block">
+            <img ref="container" :class="[isLoggingIn ? 'zoom-in' : 'zoom-out']" :src="bgImg" alt="" class="absolute inset-0 h-full w-full object-cover hidden lg:block -z-10" />
+            <!-- src="https://images.unsplash.com/photo-1529144415895-6aaf8be872fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1980&q=80"/> -->
 
-                <div>
-                    <label class="block text-sm font-medium leading-6 text-gray-900" for="password">
-                        <span class="flex flex-row items-center">
-                            <LockClosedIcon class="h-5 mr-1" />
-                            Password
-                        </span>
-                    </label>
-                    <div class="mt-2">
-                        <input id="password" v-model="passwordInput" autocomplete="current-password"
-                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                            name="password" required type="password" />
+            <!--<div class="relative hidden w-0 flex-1 lg:block">-->
+            <!--<img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1980&q=80" alt="" />-->
+            <!--<img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1980&q=80" alt="" />-->
+            <!--<img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1980&q=80" alt="" />-->
+            <!--</div>-->
+        </div>
+
+        <div v-if="showWaltidLoadingSpinner" :class="[isLoggingIn ? 'animate-spin' : '']" :style="cardStyle" class="absolute bottom-3.5 right-3.5 w-10 lg:w-16 h-10 lg:h-16 overflow-hidden">
+            <img class="overflow-hidden" src="/svg/walt-s.svg" />
+        </div>
+
+        <!--suppress PointlessBooleanExpressionJS -->
+        <!-- TODO: move transition to ~/components/modals/ModalBase.vue -->
+        <TransitionRoot :show="error.isError === true" as="template">
+            <Dialog as="div" class="relative z-10" @close="closeModal">
+                <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                </TransitionChild>
+
+                <div class="fixed inset-0 z-10 overflow-y-auto">
+                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <TransitionChild
+                            as="template"
+                            enter="ease-out duration-300"
+                            enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                            enter-to="opacity-100 translate-y-0 sm:scale-100"
+                            leave="ease-in duration-200"
+                            leave-from="opacity-100 translate-y-0 sm:scale-100"
+                            leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        >
+                            <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                                <div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
+                                    <button
+                                        class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                        type="button"
+                                        @click="closeModal"
+                                    >
+                                        <span class="sr-only">Close</span>
+                                        <XMarkIcon aria-hidden="true" class="h-6 w-6" />
+                                    </button>
+                                </div>
+                                <div class="sm:flex sm:items-start">
+                                    <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                        <ExclamationCircleIcon aria-hidden="true" class="h-6 w-6 text-red-600" />
+                                    </div>
+                                    <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                        <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900"> Invalid login </DialogTitle>
+                                        <div class="mt-2">
+                                            <p class="text-sm text-gray-500">
+                                                {{ error.message }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                                    <button
+                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-neutral-50 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-700 sm:mt-0 sm:w-auto"
+                                        type="button"
+                                        @click="closeModal"
+                                    >
+                                        Okay
+                                    </button>
+                                </div>
+                            </DialogPanel>
+                        </TransitionChild>
                     </div>
                 </div>
-
-                <!-- The rest of your form components like "Forgot your password?" link and "Remember me" checkbox can be added here if needed -->
-                <div>
-                    <button type="submit"
-                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
-                        style="background-color: #1e789f;" onmouseover="this.style.backgroundColor='#0B2E4F'"
-                        onmouseout="this.style.backgroundColor='#1e789f'" onfocus="this.style.borderColor='#01A6D8';"
-                        onblur="this.style.borderColor='transparent';">
-                        Login
-                        <svg v-if="isLoggingIn" class="animate-spin ml-1.5 mr-3 h-5 w-5 text-white" fill="none"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
-                            </circle>
-                            <path class="opacity-75"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <ArrowRightEndOnRectangleIcon v-else class="ml-1.5 h-5 w-5" />
-                    </button>
-
-                </div>
-            </form>
-            <!-- Or Continue With Section -->
-            <!-- <div class="relative mt-6">
-                <div aria-hidden="true" class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-300" />
-                </div>
-                <div class="relative flex justify-center text-sm">
-                    <span class="bg-white px-2 text-gray-500 rounded-3xl">Or continue with</span>
-                </div>
-            </div>
-            <div class="mt-8">
-                <div class="grid grid-cols-1 gap-4">
-                    <button class="btn-crypto" @click="openWeb3()">
-                        Sign In with Crypto Wallet
-                        <svg class="ml-3 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </button>
-                    <button class="btn-oidc" @click="connectOidc()">
-                        Sign In with OIDC
-                        <svg class="ml-3 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div> -->
-        </div>
-        <div class="overflow-hidden max-h-screen absolute inset-0 w-full h-full -z-10">
-            <img :src="bgImg" alt="Background image" class="absolute inset-0 h-full w-full object-cover" />
-            <!-- Dark Overlay -->
-            <div class="absolute inset-0 bg-black opacity-55"></div>
-        </div>
-
-
+            </Dialog>
+        </TransitionRoot>
     </div>
 </template>
 
-
 <script lang="ts" setup>
-import { ArrowRightEndOnRectangleIcon, BookmarkSquareIcon, EnvelopeIcon, IdentificationIcon, QuestionMarkCircleIcon, AtSymbolIcon, LockClosedIcon } from "@heroicons/vue/20/solid";
+import { ArrowRightOnRectangleIcon, BookmarkSquareIcon, EnvelopeIcon, IdentificationIcon, QuestionMarkCircleIcon } from "@heroicons/vue/20/solid";
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue";
 import { ExclamationCircleIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { usePageLeave, useParallax } from "@vueuse/core";
@@ -112,8 +237,7 @@ import useModalStore from "~/stores/useModalStore";
 import { useUserStore } from "~/stores/user";
 import { storeToRefs } from "pinia";
 import { useTenant } from "~/composables/tenants";
-// import { CRYPTO_JWT_TTL } from "@walletconnect/core";
-import { decodeJwt } from "jose";
+import {decodeJwt} from "jose";
 
 const store = useModalStore();
 
@@ -183,7 +307,7 @@ function openWeb3() {
 }
 
 definePageMeta({
-    title: "Login to your wallet - InfoCert",
+    title: "Login to your wallet - walt.id",
     layout: "minimal",
     auth: {
         unauthenticatedOnly: true,
@@ -201,7 +325,7 @@ const cardStyle = computed(() => ({
 }));
 
 useHead({
-    title: "Login to your InfoCert wallet",
+    title: "Login to your wallet - walt.id",
 });
 
 const route = useRoute();
@@ -217,10 +341,10 @@ async function tryLoginWithOidcSession() {
         redirect: "manual",
     });
 
-    console.log(token);
+
 
     const tokenText = await token.text();
-    console.log(tokenText);
+  console.log("text token : " + tokenText);
 
     await signIn(
         {
@@ -231,19 +355,18 @@ async function tryLoginWithOidcSession() {
         { callbackUrl: signInRedirectUrl.value },
     )
         .then(() => {
-            console.log("Signed in with OIDC");
-            console.log("Token: " + decodeJwt(tokenText).sub);
+          console.log("Signed in with OIDC");
+          console.log("Token: " + decodeJwt(tokenText).sub);
             user.value = {
                 token: tokenText,
                 id: "",
-                email: decodeJwt(tokenText).email,
-                name: decodeJwt(tokenText).name,
+              email: decodeJwt(tokenText).email,
+              name: decodeJwt(tokenText).name,
                 oidcSession: true
             };
 
             console.log("Wrote to user: " + JSON.stringify(user.value))
         })
-
         .catch((err) => {
             console.log("Could not sign in", err);
             error.value = {
@@ -262,7 +385,6 @@ if (isOidcLogin.value) {
 
 <style scoped>
 @keyframes zoom-in {
-
     25%,
     100% {
         transform: scale(2);
@@ -274,7 +396,6 @@ if (isOidcLogin.value) {
     0% {
         transform: scale(2);
     }
-
     100% {
         transform: scale(1);
     }
@@ -287,65 +408,5 @@ if (isOidcLogin.value) {
 .zoom-out {
     animation: zoom-out 0.5s normal forwards;
     //animation: none;
-}
-
-.btn-crypto {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 6px 24px;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: medium;
-    border-radius: 8px;
-    color: white;
-    background: linear-gradient(to right, #1e789f, #0B2E4F);
-    transition: background 0.3s ease;
-}
-
-.btn-crypto:hover {
-    background: linear-gradient(to right, #0B2E4F, #1A6D8);
-}
-
-.btn-crypto:focus {
-    border-color: #01A6D8;
-    outline: none;
-}
-
-.btn-crypto:focus:not(:focus-visible) {
-    border-color: transparent;
-}
-
-.btn-oidc {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 6px 24px;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: medium;
-    border-radius: 8px;
-    color: white;
-    background: linear-gradient(to right, #18515b, #019DC8);
-    transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.btn-oidc:hover {
-    background: linear-gradient(to right, #18515b, #019DC8);
-}
-
-.btn-oidc:focus {
-    border-color: #818387;
-    outline: none;
-}
-
-.btn-oidc:focus:not(:focus-visible) {
-    border-color: transparent;
 }
 </style>

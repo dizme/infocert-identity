@@ -128,7 +128,7 @@ async function register() {
             },
         });
     } else {
-        submit();
+        await submit();
     }
 }
 
